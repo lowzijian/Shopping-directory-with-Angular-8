@@ -1,27 +1,14 @@
 # ShoppingDirectoryApp
+This project was developed using Angular 8. It was a simple shopping directory web page that display a list of tenant . The data was generated using postgreSQL database and fetched using REST API.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+## How to run the app 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. Then , navigate to `\src\nodePostgresSetup` . Debug the `webAPI-setup.js` and let it running. rRefresh the web page and a list of shopping tenants will be displayed.
 
-## Development server
+## Building a Web API with Express and PostgreSQL to Consume from Browser
+NPM install : https://node-postgres.com/
+Refer to `webAPI-setup.js` for further information.
+Tutorial video :
+https://www.youtube.com/watch?v=0JNq46eFuOM
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Database Setup
+Copy `database.txt` into PSQL CLI. 
