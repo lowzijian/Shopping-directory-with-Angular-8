@@ -13,3 +13,6 @@ https://www.youtube.com/watch?v=0JNq46eFuOM
 ## Database Setup
 Copy `database.txt` into PSQL CLI. 
 
+##  Sample Output
+Here is the sample output
+![Screenshot](https://github.com/lowzijian/Shopping-directory-with-Angular-8/blob/master/Screenshots/Screenshot.png)
