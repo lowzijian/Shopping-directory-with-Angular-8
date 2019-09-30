@@ -12,3 +12,4 @@ https://www.youtube.com/watch?v=0JNq46eFuOM
 
 ## Database Setup
 Copy `database.txt` into PSQL CLI. 
+
