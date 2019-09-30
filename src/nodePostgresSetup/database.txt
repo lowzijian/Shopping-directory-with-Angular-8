@@ -1,0 +1,69 @@
+CREATE DATABASE shopping;
+
+
+DROP TABLE IF EXISTS categories;
+CREATE TABLE IF NOT EXISTS categories (
+  category_id SERIAL PRIMARY KEY,
+  name VARCHAR (50) NOT NULL UNIQUE,
+  description TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT NULL
+);
+
+
+INSERT INTO categories (category_id,name,description) VALUES
+(1,'Food & Beverages', 'Famous local or foreign restaurants'),
+(2,'Fashion', 'Clothes stores with beautifuls, elegance costumes'),
+(3,'Entertainment', 'Stores providing interesting and relaxing products and services'),
+(4,'Beauty & Wellness', 'Products and services for skin care, beauty and body fitness'),
+(5,'Supermarket', 'Stores for purchasing domestic products'),
+(6,'Home', 'Stores for purchasing home applicances and furnitures'),
+(7,'Book & Stationaries', 'Stores for purchasing books and stationaries'),
+(8,'Jewellry & Timepieces', 'Stores for purchasing graceful jewellry and watches'),
+(9,'Communication & IT', 'IT stores providing latest and high tech electronic gadgets and applicances'),
+(10,'Optical & Eyeware', 'Stores with high quality eyeware products and services' ),
+(11,'Toy & Games', 'Stores for purchasing toys, gaming consoles and famous games');
+
+
+
+DROP TABLE IF EXISTS zones;
+CREATE TABLE IF NOT EXISTS zones (
+  zone_id SERIAL PRIMARY KEY,
+  name VARCHAR (50) NOT NULL UNIQUE,
+  description TEXT NOT NULL
+ );
+ 
+INSERT INTO zones (zone_id, name,description) VALUES
+(1, 'North', 'North area'),
+(2, 'East', 'East area'),
+(3, 'South', 'South area'),
+(4, 'West', 'West area');
+
+
+DROP TABLE IF EXISTS tenants;
+CREATE TABLE IF NOT EXISTS tenants (
+  tenant_id SERIAL PRIMARY KEY,
+  tenant_name VARCHAR (50) NOT NULL UNIQUE,
+  tenant_description TEXT NOT NULL ,
+  lot_no CHAR(6) NOT NULL,
+  floor CHAR(2) NOT NULL CONSTRAINT available_floor CHECK (floor in ('LG', 'G', '1','2')),
+  zone_id INTEGER REFERENCES zones (zone_id) ,
+  category_id INTEGER REFERENCES categories (category_id),
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT NULL
+);
+
+
+INSERT INTO tenants (tenant_name,  tenant_description, lot_no, floor, zone_id, category_id) VALUES
+('Starbucks Coffee', 'This is Starbucks Coffee', 'F01','LG',1,1),
+('McDonalds', 'This is McDonalds', 'F02','LG',2,1),
+('Uniqlo', 'This is Uniqlo', 'F03','G',3,2),
+('The Rift', 'This is The Rift', 'F04','G',2,3),
+('Guardian', 'This is Guardian', 'F05','1',4,4),
+('Aeon', 'This is Aeon', 'F06','G',2,5),
+('Home Living', 'This is Home Living', 'F07','G',1,6),
+('Popular', 'This is Popular', 'F08','2',1,7),
+('Poh Kong', 'This is Poh Kong', 'F09','1',1,8),
+('ThunderMatch', 'This is ThunderMatch', 'F10','2',3,9),
+('OWL', 'This is OWL', 'F11','2',2,10),
+('Toy R US', 'This is Toy R US', 'F12','1',2,11);
