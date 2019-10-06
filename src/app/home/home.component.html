@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+<h4>These are the available tenants</h4>
+  <ng-template [ngIf] = "tenants" [ngIfElse] = "none">
+          <!--Check if tenants is existed-->
+          <ul *ngIf = "tenants">
+              <li *ngFor = "let tenant of tenants">
+                  <p class = "name">{{tenant.tenant_name}}</p>
+                  <p class = "description">{{tenant.tenant_description}}</p>
+                  <Table>
+                    <th class = "tenantInfo">{{tenant.lot_no}}</th>
+                    <th class = "tenantInfo">{{tenant.area}}</th>
+                    <th class = "tenantInfo">{{tenant.floor}} Floor</th>
+                  </Table>
+
+              </li>
+          </ul>
+      </ng-template>
+
+      <ng-template #none>
+          <strong> {{errorMessage}} </strong>
+      </ng-template>
+</body>
+</html>

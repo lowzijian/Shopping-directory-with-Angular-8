@@ -13,13 +13,60 @@ body {
     width: 80%;
     margin: 0 auto;
 }
+
 header {
     background: $primary;
     padding:1em 0;
+    position: sticky;
+
 
     h1{
-      margin-top: 2em;
-      color: white;
+      color:white;
     }
+
+    .navigationMenu{
+      background: $primary;
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+
+       a {
+              padding: 15px;
+              color: white;
+              text-decoration: none;
+
+              // & refers to this
+              &:hover{
+                  background: darken($color: $primary, $amount:10%);
+              }
+
+              &.active{
+                  color:yellow;
+                  font-weight: bold;
+              }
+          }
+
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lightgrey;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
 }
 

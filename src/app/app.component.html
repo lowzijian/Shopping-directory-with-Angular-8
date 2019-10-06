@@ -1,35 +1,21 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 <header>
   <div class ="container">
     <h1>{{title}}</h1>
   </div>
 
+    <div class = "navigationMenu">
+        <a href="#" routerLink = "home"   routerLinkActive="active">Home</a>
+        <a href="#" routerLink = "categories"   routerLinkActive="active" >Categories</a>
+    </div>
 </header>
 
-<body>
-  <div class ="container">
-   <h4>These are available tenants</h4>
-      <ng-template [ngIf] = "tenants" [ngIfElse] = "none">
-              <!--Check if tenants is existed-->
-              <ul *ngIf = "tenants">
-                  <li *ngFor = "let tenant of tenants">
-                      <p class = "name">{{tenant.tenant_name}}</p>
-                      <p class = "description">{{tenant.tenant_description}}</p>
-                      <Table>
-                        <th class = "locationInfo">{{tenant.lot_no}}</th>
-                        <th class = "locationInfo">{{tenant.description}}</th>
-                        <th class = "locationInfo">{{tenant.floor}} Floor</th>
-                      </Table>
-                  
-                  </li>
-              </ul>
-          </ng-template>
-          
-          <ng-template #none>
-              <strong> {{errorMessage}} </strong>
-          </ng-template>
-
-  </div>
-</body>
 
 
+<div class ="container">
 <router-outlet></router-outlet>
+</div>

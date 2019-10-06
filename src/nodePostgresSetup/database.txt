@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS zones (
   name VARCHAR (50) NOT NULL UNIQUE,
   description TEXT NOT NULL
  );
- 
+
 INSERT INTO zones (zone_id, name,description) VALUES
 (1, 'North', 'North area'),
 (2, 'East', 'East area'),
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS tenants (
   tenant_name VARCHAR (50) NOT NULL UNIQUE,
   tenant_description TEXT NOT NULL ,
   lot_no CHAR(6) NOT NULL,
-  floor CHAR(2) NOT NULL CONSTRAINT available_floor CHECK (floor in ('LG', 'G', '1','2')),
+  floor CHAR(1) NOT NULL CONSTRAINT available_floor CHECK (floor in ('G', '1','2')),
   zone_id INTEGER REFERENCES zones (zone_id) ,
   category_id INTEGER REFERENCES categories (category_id),
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS tenants (
 
 
 INSERT INTO tenants (tenant_name,  tenant_description, lot_no, floor, zone_id, category_id) VALUES
-('Starbucks Coffee', 'This is Starbucks Coffee', 'F01','LG',1,1),
-('McDonalds', 'This is McDonalds', 'F02','LG',2,1),
+('Starbucks Coffee', 'This is Starbucks Coffee', 'F01','G',1,1),
+('McDonalds', 'This is McDonalds', 'F02','G',2,1),
 ('Uniqlo', 'This is Uniqlo', 'F03','G',3,2),
 ('The Rift', 'This is The Rift', 'F04','G',2,3),
 ('Guardian', 'This is Guardian', 'F05','1',4,4),

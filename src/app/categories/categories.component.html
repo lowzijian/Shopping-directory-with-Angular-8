@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <ng-template [ngIf] = "categories" [ngIfElse] = "none">
+        <!--Check if tenants is existed-->
+        <ul *ngIf = "categories" class = categories>
+            <li *ngFor = "let category of categories" class = "category">
+                <p>{{category.name}}</p>
+                <i class = "'{{category.iconName}}}'"  style="font-size:40px;  align-self: center;
+                 "></i>
+            </li>
+        </ul>
+    </ng-template>
+
+    <ng-template #none>
+        <strong> {{errorMessage}} </strong>
+    </ng-template>
+
+</body>
+</html>

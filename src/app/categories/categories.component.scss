@@ -1,0 +1,37 @@
+.categories{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  align-content: center;
+
+.category{
+  background: yellow;
+  padding: 1em;
+  margin-right: 10px;
+  width: 20%;
+  height: 200px;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    font-size: 1.8em;
+    text-align: center;
+    font-weight: bold;
+
+  }
+
+  &:hover{
+    background-color: darken($color: yellow, $amount: 15%);
+
+    p{
+      color:white;
+    }
+  }
+
+}
+
+}

@@ -15,12 +15,20 @@ const app = express();
 var cors = require('cors')
 app.use(cors())
 
-app.get("/selectQuery" , async (req,res) =>
+app.get("/allTenants" , async (req,res) =>
 {
     const result = await readAlltenants()
     res.setHeader("content-type","application/json")
     res.send(JSON.stringify(result))
 })
+
+app.get("/allCategories" , async (req,res) =>
+{
+    const result = await readAllshoppingCategories()
+    res.setHeader("content-type","application/json")
+    res.send(JSON.stringify(result))
+})
+
 app.listen(8080, () => console.log("Web server is listening .. on port 8080"));
 
 
@@ -39,10 +47,10 @@ async function start(){
     await connect();
 }
 
-//select query 
+//select query : fetch all available tenants
 async function readAlltenants(){
     try{
-        const results = await client.query("SELECT t.tenant_name, t.tenant_description , t.floor, z.description , t.lot_no from tenants t join zones z ON t.zone_id = z.zone_id");
+        const results = await client.query("SELECT t.tenant_name, t.tenant_description , t.floor, z.description as area, t.lot_no from tenants t join zones z ON t.zone_id = z.zone_id");
         return results.rows;
     }
     catch (error){
@@ -50,4 +58,14 @@ async function readAlltenants(){
     }
 }
 
+// select query : fetch all category types
+async function readAllshoppingCategories(){
+  try{
+      const results = await client.query("SELECT category_id , name from categories");
+      return results.rows;
+  }
+  catch (error){
+      return [];
+  }
+}
 start()
